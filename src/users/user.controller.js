@@ -1,4 +1,4 @@
-import Admin from './admin.model.js'
+import User from './user.model.js'
 import { hash, verify } from 'argon2'
 import { generateJWT } from '../helpers/generate-jwt.js'
 import { response, request } from 'express'
@@ -11,23 +11,23 @@ export const login = async (req, res) => {
         const lowerEmail = email ? email.toLowerCase() : null;
         const lowerUsername = username ? username.toLowerCase() : null;
 
-        const admin = await Admin.findOne({
+        const user = await User.findOne({
             $or: [{ email: lowerEmail }, { username: lowerUsername }]
         });
 
-        if (!admin) {
+        if (!user) {
             return res.status(404).json({
                 msg: 'Credenciales incorrectas, correo no existe en la base de datos'
             })
         }
 
-        if (!admin.estado) {
+        if (!user.estado) {
             return res.status(404).json({
-                msg: 'El adminstrador no existe en la base de datos'
+                msg: 'El usuario no existe en la base de datos'
             })
         }
 
-        const validPassword = await verify(admin.password, password);
+        const validPassword = await verify(user.password, password);
 
         if (!validPassword) {
             return res.status(404).json({
@@ -35,10 +35,10 @@ export const login = async (req, res) => {
             })
         }
 
-        const token = await generateJWT(admin.id);
+        const token = await generateJWT(user.id);
 
         res.status(200).json({
-            msg: 'Inicio de sesion con exito',
+            msg: 'Inicio de secion',
             userDetails: {
                 username: user.username,
                 token: token
@@ -50,7 +50,7 @@ export const login = async (req, res) => {
         console.error(e);
 
         return res.status(500).json({
-            msg: 'Admin registration failded',
+            msg: 'User registration failded',
             error: e.message
         })
     }
@@ -58,22 +58,23 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
     try {
-        
+
         const data = req.body;
 
         const encryptedPassword = await hash(data.password);
         
-        const admin = await Admin.create({
+        const user = await User.create({
             name: data.name,
             surname: data.surname,
             username: data.username.toLowerCase(),
             email: data.email.toLowerCase(),
             phone: data.phone,
-            password: encryptedPassword
+            password: encryptedPassword,
+            role: data.role || ''
         })
 
         res.status(200).json({
-            msg: 'Admin registered successfully',
+            msg: 'User registered successfully',
             userDetails: {
                 username: user.username
             }
@@ -84,21 +85,22 @@ export const register = async (req, res) => {
         console.error(error);
 
         return res.status(500).json({
-            msg: 'Admin registration failded',
+            msg: 'User registration failded',
             error: error.message
         })
     }
 }
 
-export const getAdmins = async (req = request, res = response) => {
+
+export const getUsers = async (req = request, res = response) => {
     try {
 
         const { limite = 10, desde = 0 } = req.body;
         const query = { estado: true };
 
-        const [total, admins] = await Promise.all([
-            Admin.countDocuments(query),
-            Admin.find(query)
+        const [total, users] = await Promise.all([
+            User.countDocuments(query),
+            User.find(query)
            .skip(Number(desde))
            .limit(Number(limite))
         ])
@@ -106,55 +108,55 @@ export const getAdmins = async (req = request, res = response) => {
         res.status(200).json({
             success: true,
             total,
-            admins
+            users
         })
     
     } catch (error) {
 
         res.status(500).json({
             success: false,
-            msg: 'Error al obtener los administradores',
+            msg: 'Error al obtener los usuarios',
             error
         })       
     }
 }
 
-export const getAdminById = async (req, res) => {
+export const getUserById = async (req, res) => {
     try {
         
         const { id } = req.params;
 
-        const admin = await Admin.findById(id);
+        const user = await User.findById(id);
 
-        if (admin.estado === false) {
+        if (user.estado === false) {
             return res.status(400).json({
                 success: false,
-                msg: 'Error, este administrador buscado no esta disponible'
+                msg: 'Error, este usuario buscado no esta disponible'
             })
         }
 
-        if (!admin) {
+        if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: 'Error, admin no encontrado'
+                msg: 'Error, usuario no encontrado'
             })
         }
 
         res.status(200).json({
             success: true,
-            admin
+            user
         })
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: 'Error, el administrador no ha sido encontrado',
+            msg: 'Error, el usuario no ha sido encontrado',
             error
         })
     }
 }
 
-export const updateAdmins = async (req, res = response) => {
+export const updateUser = async (req, res = response) => {
     try {
         
         const { id } = req.params;
@@ -166,22 +168,22 @@ export const updateAdmins = async (req, res = response) => {
             data.username = username;
         }
 
-        const admin = await Admin.findById(id);
-        if (!admin) {
+        const user = await User.findById(id);
+        if (!user) {
             return res.status(400).json({
                 success: false,
-                msg: 'Error, admin no encontrado'
+                msg: 'Error, Usuario no encontrado'
             })
         }
 
-        if (admin.estado === false) {
+        if (user.estado === false) {
             return res.status(400).json({
                 success: false,
-                msg: 'Error, Este admin no esta disponible'
+                msg: 'Error, Este usuario no esta disponible'
             })
         }
 
-        if (req.admin.id !== id) {
+        if (req.user.id !== id && req.user.role !== "ADMIN") {
             return res.status(400).json({
                 success: false,
                 msg: 'Error, permiso denegado para actualizar un perfil que no es suyo'
@@ -196,7 +198,7 @@ export const updateAdmins = async (req, res = response) => {
                 })
             }
             
-            const verifyPassword = await verify(admin.password, currentPassword);
+            const verifyPassword = await verify(user.password, currentPassword);
             
             if (!verifyPassword) {
                 return res.status(400).json({
@@ -209,12 +211,12 @@ export const updateAdmins = async (req, res = response) => {
         }
 
 
-        const updateAdmin = await Admin.findByIdAndUpdate(id, data, { new: true });
+        const updateUser = await User.findByIdAndUpdate(id, data, { new: true });
 
         res.status(200).json({
             success: true,
-            msg: "El admin se ha actualizado",
-            updateAdmin
+            msg: "El usuario se ha actualizado",
+            updateUser
         })
 
     } catch (error) {
@@ -227,7 +229,7 @@ export const updateAdmins = async (req, res = response) => {
     }
 }
 
-export const deleteAdmins = async (req, res) => {
+export const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
         const { password } = req.body;
@@ -239,32 +241,32 @@ export const deleteAdmins = async (req, res) => {
             });
         }
         
-        const admin = await Admin.findByIdAndUpdate(id, { estado: false }, { new: true });
-        const authenticatedAdmin = req.user;
+        const user = await User.findByIdAndUpdate(id, { estado: false }, { new: true });
+        const authenticatedUser = req.user;
 
         return res.status(200).json({
             success: true,
             msg: 'Usuario desactivado',
-            admin,
-            authenticatedAdmin
+            user,
+            authenticatedUser
         });
 
     } catch (error) {
         return res.status(500).json({
             success: false,
-            msg: 'Error al desactivar administrador',
+            msg: 'Error al desactivar usuario',
             error
         });
     }
 };
 
 
-export const createAddAdmin = async () => {
+export const createAddAdmin = async (req, res) => {
     try {
 
-        const verifyAdmin = await Admin.findOne({ username: "Administrador".toLowerCase() })
+        const verifyUser = await User.findOne({ username: "Administrador".toLowerCase() })
 
-        if (!verifyAdmin) {
+        if (!verifyUser) {
             const encryptedPassword = await hash("Admin100");
             const adminUser = new User({
                 name: "Alejandro",
@@ -283,6 +285,8 @@ export const createAddAdmin = async () => {
             console.log("Administrado se ha creado exitosamente");
         }
 
+        
+
     
     } catch (error) {
         console.error("Error, no se ha podido crear el administrado: ", 
@@ -290,3 +294,4 @@ export const createAddAdmin = async () => {
     );
     }
 }
+

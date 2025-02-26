@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import Admin from "../admins/admin.model.js";
+import User from "../users/user.model.js";
 
-export const validarAdminJWT = async (req, res, next) => {
+export const validarUserJWT = async (req, res, next) => {
 
     const token = req.header("x-token");
 
@@ -15,21 +15,21 @@ export const validarAdminJWT = async (req, res, next) => {
 
         const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
 
-        const admin = await Admin.findById(uid);
+        const user = await User.findById(uid);
 
-        if (!admin) {
+        if (!user) {
             return res.status(400).json({
-                msg: "Token del administrado no ha sido encontrado"
+                msg: "Token de usuario no encontrado"
             });
         }
 
-        if (admin.estado === false) {
+        if (user.estado === false) {
             return res.status(400).json({
-                msg: "Token no válido - admin con estado: false"
+                msg: "Token no válido - usuario con estado: false"
             });
         }
 
-        req.admin = admin;
+        req.user = user;
         
         next();
         

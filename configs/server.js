@@ -4,8 +4,9 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import { createAddAdmin } from '../src/users/user.controller.js';
 import { dbConnection } from './mongo.js';
-import adminRoutes from '../src/admins/admin.routes.js';
+import userRoutes from '../src/users/user.routes.js';
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -13,17 +14,17 @@ const middlewares = (app) => {
     app.use(express.json());
     app.use(helmet());
     app.use(morgan('dev'));
-    app.use(limiter);
 }
 
 const routes = (app) => {
-    app.use('/onlineSale/v1/admins', adminRoutes);
+    app.use('/onlineSale/v1/users', userRoutes);
 };
 
 const conectarDB = async () => {
     try {
         await dbConnection();
-        console.log('Conexión a la base de datos ha sido exitosa');
+        console.log('Conexión a la base de datos exitosa');
+        await createAddAdmin();
     } catch (error) {
         console.error('Error al conectar a la base de datos:', error);
         process.exit(1);
