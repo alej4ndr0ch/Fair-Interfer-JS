@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "67c3e95c3c7bb43d5614a4ee"
+  },
+  "name": "Diego",
+  "surname": "Maradona",
+  "email": "alejandrohernandez@gmail.com",
+  "phone": "77889955",
+  "address": "home12",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-03-02T05:15:08.932Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-02T05:22:44.778Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c3eb143c7bb43d5614a4fc"
+  },
+  "name": "Cristiano",
+  "surname": "Ronaldo",
+  "email": "cristianoronaldo@gmail.com",
+  "phone": "77777777",
+  "address": "home7",
+  "estado": false,
+  "createdAt": {
+    "$date": "2025-03-02T05:22:28.401Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-02T05:23:07.009Z"
+  }
+}]
