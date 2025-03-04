@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "67c513e5d904e16179889bf4"
+  },
+  "name": "Samsung",
+  "category": "Technology",
+  "authorizationLevel": "medio",
+  "foundationYear": 1975,
+  "createdAt": {
+    "$date": "2025-03-03T02:28:53.033Z"
+  },
+  "estado": true,
+  "updatedAt": {
+    "$date": "2025-03-03T02:42:45.330Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c51682d904e16179889bfc"
+  },
+  "name": "Playstation",
+  "category": "Technology",
+  "authorizationLevel": "alto",
+  "foundationYear": 1988,
+  "createdAt": {
+    "$date": "2025-03-03T02:40:02.258Z"
+  },
+  "estado": true,
+  "updatedAt": {
+    "$date": "2025-03-03T02:40:02.258Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c670652a6f0d2536220e45"
+  },
+  "name": "Microsoft",
+  "category": "Technology",
+  "authorizationLevel": "bajo",
+  "foundationYear": 1950,
+  "createdAt": {
+    "$date": "2025-03-04T03:15:49.470Z"
+  },
+  "estado": true,
+  "updatedAt": {
+    "$date": "2025-03-04T03:15:49.470Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c6716d2a6f0d2536220e52"
+  },
+  "name": "HP",
+  "category": "Technology",
+  "authorizationLevel": "medio",
+  "foundationYear": 1955,
+  "description": "Empresa dedicada en desarrollar tecnologia de computadoras",
+  "createdAt": {
+    "$date": "2025-03-04T03:20:13.293Z"
+  },
+  "estado": true,
+  "updatedAt": {
+    "$date": "2025-03-04T03:20:13.293Z"
+  }
+}]
