@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "2d77aeb7-df9c-4620-9deb-043d63aa8927",
+		"name": "Clients",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42042928"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDA4OTI0OTgsImV4cCI6MTc0MDg5NjA5OH0.0JEO2MwlDfpR4eouzJUBpwzestqh68ghlCQhQGUgb-U",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Cristiano\",\r\n    \"surname\" : \"Ronaldo\",\r\n    \"email\" : \"cristianoronaldo@gmail.com\",\r\n    \"phone\" : \"77777777\",\r\n    \"address\" : \"home7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDA4OTI0OTgsImV4cCI6MTc0MDg5NjA5OH0.0JEO2MwlDfpR4eouzJUBpwzestqh68ghlCQhQGUgb-U",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"clients",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDA4OTI0OTgsImV4cCI6MTc0MDg5NjA5OH0.0JEO2MwlDfpR4eouzJUBpwzestqh68ghlCQhQGUgb-U",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/clients/67c3e95c3c7bb43d5614a4ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"clients",
+						"67c3e95c3c7bb43d5614a4ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDA4OTI0OTgsImV4cCI6MTc0MDg5NjA5OH0.0JEO2MwlDfpR4eouzJUBpwzestqh68ghlCQhQGUgb-U",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Diego\",\r\n    \"surname\" : \"Maradona\",\r\n    \"email\" : \"armandoMaradona@gmail.com\",\r\n    \"phone\" : \"77889955\",\r\n    \"address\" : \"home12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/clients/67c3e95c3c7bb43d5614a4ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"clients",
+						"67c3e95c3c7bb43d5614a4ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDA4OTI0OTgsImV4cCI6MTc0MDg5NjA5OH0.0JEO2MwlDfpR4eouzJUBpwzestqh68ghlCQhQGUgb-U",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/clients/67c3eb143c7bb43d5614a4fc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"clients",
+						"67c3eb143c7bb43d5614a4fc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

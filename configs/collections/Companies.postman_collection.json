@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "0d1b56dd-53cc-4f01-9f82-020bb2605bc9",
+		"name": "Companies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42042928"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDEwNTgxMzksImV4cCI6MTc0MTA2MTczOX0.dTs59Jtfke9p0oADOg8UcT8vgT_FfF5J1ARrnpBb148",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"HP\",\r\n    \"authorizationLevel\": \"medio\",\r\n    \"category\": \"Technology\",\r\n    \"foundationYear\": 1955,\r\n    \"description\" : \"Empresa dedicada en desarrollar tecnologia de computadoras\",\r\n    \"yearExperience\": 69\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/companies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"companies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDEwNTgxMzksImV4cCI6MTc0MTA2MTczOX0.dTs59Jtfke9p0oADOg8UcT8vgT_FfF5J1ARrnpBb148",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/companies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"companies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDA5Njk0NzAsImV4cCI6MTc0MDk3MzA3MH0.idPnmQt8H5LsCiFlp5qTJ7JOxx9CC_A-Uzl8m2hpMgI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/companies/67c51682d904e16179889bfc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"companies",
+						"67c51682d904e16179889bfc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDA5Njk0NzAsImV4cCI6MTc0MDk3MzA3MH0.idPnmQt8H5LsCiFlp5qTJ7JOxx9CC_A-Uzl8m2hpMgI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Samsung\",\r\n    \"authorizationLevel\": \"medio\",\r\n    \"category\": \"Technology\",\r\n    \"foundationYear\": 1975,\r\n    \"yearExperience\": 49\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/companies/67c513e5d904e16179889bf4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"companies",
+						"67c513e5d904e16179889bf4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxMDk3ZTFhOGRmNDkzYzA4MzVkZGEiLCJpYXQiOjE3NDEwNTg0MjQsImV4cCI6MTc0MTA2MjAyNH0.w4oScjZRmoi5teH_WPG9NvwEpvmsttfOQhYtxIDK0U8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/companies/export/excel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"companies",
+						"export",
+						"excel"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
