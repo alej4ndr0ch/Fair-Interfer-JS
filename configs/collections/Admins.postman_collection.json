@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "1fee8d15-4ae1-4998-902a-0a067ac2e922",
+		"name": "Admins",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42042928"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Carlos\",\r\n    \"surname\" : \"Cortez\",\r\n    \"username\" : \"C0rtez\",\r\n    \"email\" : \"carloscortez@gmail.com\",\r\n    \"password\" : \"barcelona1994\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/admins/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"admins",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"Administrador\",\r\n    \"password\" : \"Admin100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/admins/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"admins",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/admins/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"admins",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/admins/67c39b2a93d9a83935a6c4aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"admins",
+						"67c39b2a93d9a83935a6c4aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzOWIyYTkzZDlhODM5MzVhNmM0YWEiLCJpYXQiOjE3NDA4NzM5ODMsImV4cCI6MTc0MDg3NzU4M30.slMY1iERw6__NezH_MK3AjFnRY7y6xFVJGeKxr9RX0A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Bryan\",\r\n    \"surname\": \"Joj\",\r\n    \"username\": \"J0j123\",\r\n    \"email\": \"bryanjoj@gmail.com\",\r\n    \"currentPassword\": \"barcelona2005\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/admins/67c39b2a93d9a83935a6c4aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"admins",
+						"67c39b2a93d9a83935a6c4aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzOWIyYTkzZDlhODM5MzVhNmM0YWEiLCJpYXQiOjE3NDA4NzM5ODMsImV4cCI6MTc0MDg3NzU4M30.slMY1iERw6__NezH_MK3AjFnRY7y6xFVJGeKxr9RX0A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/fairInterfer/v1/admins/67c39b2a93d9a83935a6c4aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fairInterfer",
+						"v1",
+						"admins",
+						"67c39b2a93d9a83935a6c4aa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
