@@ -4,9 +4,11 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { createAddAdmin } from '../src/users/user.controller.js';
+import { createAddAdmin } from '../src/admins/admin.controller.js';
 import { dbConnection } from './mongo.js';
-import userRoutes from '../src/users/user.routes.js';
+import adminRoutes from '../src/admins/admin.routes.js';
+import clientRoutes from '../src/clients/client.routes.js';
+import companyRoutes from '../src/Companies/company.routes.js';
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -17,7 +19,9 @@ const middlewares = (app) => {
 }
 
 const routes = (app) => {
-    app.use('/onlineSale/v1/users', userRoutes);
+    app.use('/fairInterfer/v1/admins', adminRoutes);
+    app.use('/fairInterfer/v1/clients', clientRoutes);
+    app.use('/fairInterfer/v1/companies', companyRoutes);
 };
 
 const conectarDB = async () => {

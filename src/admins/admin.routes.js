@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { existeUserById } from "../helpers/db-validator.js";
+import { existeAdminById } from "../helpers/db-validator.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { validarUserJWT } from "../middlewares/validar-jwt.js";
+import { validarAdminJWT } from "../middlewares/validar-jwt.js";
 import { deleteFileOnError } from "../middlewares/delete-file-on-error.js"
-import { login, register, getUsers, getUserById, updateUser, deleteUser } from "./user.controller.js";
+import { login, register, getAdmins, getAdminById, updateAdmins, deleteAdmins } from "./admin.controller.js";
 import { validatorRegister, validatorLogin } from "../middlewares/validator.js";
 
 const router = Router();
@@ -25,39 +25,39 @@ router.post(
 
 router.get(
     '/',
-    getUsers
+    getAdmins
 );
 
 router.get(
     '/:id',
     [
         check('id', 'No es ID válido').isMongoId(),
-        check('id').custom(existeUserById),
+        check('id').custom(existeAdminById),
         validarCampos
     ],
-    getUserById
+    getAdminById
 );
 
 router.put(
     '/:id',
     [
-        validarUserJWT,
+        validarAdminJWT,
         check('id', 'No es ID válido').isMongoId(),
-        check('id').custom(existeUserById),
+        check('id').custom(existeAdminById),
         validarCampos
     ],
-    updateUser
+    updateAdmins
 );
 
 router.delete(
     '/:id',
     [
-        validarUserJWT,
+        validarAdminJWT,
         check('id', 'No es ID válido').isMongoId(),
-        check('id').custom(existeUserById),
+        check('id').custom(existeAdminById),
         validarCampos,
     ],
-    deleteUser
+    deleteAdmins
 );
 
 export default router;
